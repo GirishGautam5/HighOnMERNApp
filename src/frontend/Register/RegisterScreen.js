@@ -56,31 +56,26 @@ export default function RegisterScreen({navigation}) {
   const sendUserDetails = () => {
     console.log('inside senduserfun');
     dispatch(userAction(name, email, userId, password, dispatch));
-    //  fetch('http://locahost:3000/signup', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Content-Type': 'application/json',
-
-    //   },
-    //   body: JSON.stringify(fdata),
-    // })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     // console.log(data);
-    //     if (data.error) {
-    //       // alert('Invalid Credentials')
-    //       setShowErrorMessage(data.error);
-    //     } else {
-    //       // console.log(data.udata);
-    //       alert(data.message);
-    //       navigation.navigate('SignIn');
-    //     }
-    //   });
-    //   .catch((error)=>{
-    //     console.log("Api call error");
-    //     alert(error.message);
-    //  });
+    fetch('http://locahost:3000/signup', {
+      method: 'POST',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email, name, password, userId}),
+    })
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data);
+        if (data.error) {
+          // alert('Invalid Credentials')
+          setShowErrorMessage(data.error);
+        } else {
+          // console.log(data.udata);
+          alert(data.message);
+          navigation.navigate('SignIn');
+        }
+      });
   };
 
   const googleLogin = async () => {

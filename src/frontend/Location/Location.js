@@ -171,7 +171,7 @@ const Location = props => {
             onFail={error => console.log(error)}
             onNotFound={() => console.log('no results')}
             query={{
-              
+              key: 'AIzaSyCdMbC5Z272RF0Kq3PA48j-HSHBWebm_hQ',
               language: 'en',
               components: 'country:in',
               types: 'establishment',
